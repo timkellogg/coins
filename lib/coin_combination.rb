@@ -9,7 +9,8 @@ define_method(:coin_combination) do |change|
   remaining_change %= 10
   nickels = (remaining_change / 5).floor
   remaining_change %= 5
+  pennies = remaining_change / 1
 
-  return [quarters, dimes, nickels]
+  return [quarters, dimes, nickels, pennies]
 
 end
