@@ -1,6 +1,6 @@
 define_method(:coin_combination) do |change|
 
-  total = change
+  total = change.to_i
   returned_change = []
 
   quarters = (total / 25).floor
@@ -21,38 +21,47 @@ define_method(:format_change) do |change|
   nickels = change[2]
   pennies = change[3]
 
-  if quarters
     if quarters > 1
-      quarters = "#{quarters} quarters,"
+      quarters_str = "#{quarters} quarters,"
     else
-      quarters = "#{quarters} quarter,"
+      quarters_str = "#{quarters} quarter,"
     end
-  end
 
-  if dimes
     if dimes > 1
-      dimes = "#{quarters} dimes,"
+      dimes_str = "#{quarters} dimes,"
     else
-      dimes = "#{quarters} dime,"
+      dimes_str = "#{quarters} dime,"
     end
-  end
 
-  if nickels
     if nickels > 1
-      nickels = "#{nickels} nickels,"
+      nickels_str = "#{nickels} nickels,"
     else
-      nickels = "#{nickels} nickel,"
+      nickels_str = "#{nickels} nickel,"
     end
-  end
 
-  if pennies
     if pennies > 1
-      pennies = "#{pennies} pennies"
+      pennies_str = "#{pennies} pennies"
     else
-      pennies = "#{pennies} penny"
+      pennies_str = "#{pennies} penny"
     end
-  end
 
-  return "#{quarters} #{dimes} #{nickels} #{pennies}"
+  if quarters == 0
+    quarters_str = ""
+  end
+  if dimes == 0
+    dimes_str = ""
+  end
+  if nickels == 0
+    nickels_str = ""
+  end
+  if pennies == 0
+    pennies_str = ""
+  end
+  # quarters_str ||=""
+  # dimes_str ||= ""
+  # nickels_str ||= ""
+  # pennies_str ||= ""
+
+  return "#{quarters_str} #{dimes_str} #{nickels_str} #{pennies_str}"
 
 end

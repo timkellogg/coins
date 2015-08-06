@@ -14,4 +14,9 @@ describe('coin_combination') do
   it("handles pennies correctly") do
     expect(coin_combination(1)).to(eq([0, 0, 0, 1]))
   end
+
+  it("handles indivisible values correctly") do
+    expect(coin_combination(27)).to(eq([1, 0, 0, 2]))
+  end
+
 end
